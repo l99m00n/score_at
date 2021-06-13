@@ -17,6 +17,7 @@ class CreateThemeSongsTable extends Migration
             $table->id();
             $table->foreignId('tournament_id')->constrained();
             $table->foreignId('song_id')->constrained();
+            $table->timestamps();
         });
     }
 

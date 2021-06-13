@@ -16,9 +16,7 @@ class CreateParticipationsTable extends Migration
         Schema::create('participations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tournament_id')->constrained();
-            $table->foreignId('song_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->integer('point');
             $table->timestamps();
         });
     }
