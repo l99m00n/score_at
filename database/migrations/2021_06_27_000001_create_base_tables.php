@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTournamentsTable extends Migration
+class CreateBaseTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,15 @@ class CreateTournamentsTable extends Migration
      */
     public function up()
     {
+        Schema::create('songs', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->enum('difficulity', [0, 1, 2, 3, 4]); // beginer, normal, hyper, another, leggendaria
+            $table->integer('level');
+            $table->integer('notes');
+            $table->timestamps();
+        });
+
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -27,6 +36,7 @@ class CreateTournamentsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('songs');
         Schema::dropIfExists('tournaments');
     }
 }
